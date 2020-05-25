@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>{% block title %}Home{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>{% block style %}{% endblock %}</style>
+    <style>
+      .pagination {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>{% block header %}Home Page{% endblock %}</h1>
+
+    {% block content %}
+    <table>
+      <thead>
+        <th>
+          <tr>
+          <td>about</td>
+          <!-- <td>dimension</td>
+          <td>weblink</td>
+          <td>descrition</td> -->
+          </tr>
+        </th>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td><a href="/{{ item.id }}" target="_blank">{{ item.about|title }}</a></td>
+          <!-- <td>{{ item.dimension|title }}</td>
+          <td>{{ item.weblink|title }}</td>
+          <td>{{ item.descrition|title }}</td> -->
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      {% if pages.has_prev %}
+      <a href="/?page={{ pages.prev_num }}&limit={{ pages.per_page }}">prev</a>
+      {% endif %}
+      {% if pages.page %}
+      <button disabled>{{ pages.page }}</button>
+      {% endif %}
+      {% if pages.has_next %}
+      <a href="/?page={{ pages.next_num }}&limit={{ pages.per_page }}">next</a>
+      {% endif %}
+      
+      page count: {{ pages.pages }}
+    </div>
+    {% endblock %}
+  </body>
+</html>

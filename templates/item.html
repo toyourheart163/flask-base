@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block title %}Item {{ item.id }}{% endblock %}
+
+{% block style %}
+li {
+  margin-top: 20px;
+  }
+{% endblock %}
+
+{% block header %}Item Page{% endblock %}
+
+{% block content %}
+<a href="/">Home</a>
+<ul>
+  <li>about: <br>{{ item.about }}</li>
+  <li>dimension: <br>{{ item.dimension }}</li>
+  <li>weblink: <br><a href="{{ item.weblink }}">{{ item.weblink }}</a></li>
+<li>descrition: <br>{{ item.descrition }}</li>
+<ul>
+{% endblock %}
